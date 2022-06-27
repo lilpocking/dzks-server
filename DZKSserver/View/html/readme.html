@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h1>
+        Readme file:
+    </h1>
+    <h4>
+        {parametr:int} - далее, при использовании фигурных скобок подразумевается,
+        <br />что нужно использовать параметр для нормального функционировния и/или получения нужного материала
+        <br />parametr - собственно сам параметр, который нужно указать
+        <br />после двоеточия указан тип параметра, например, int - численный тип.
+
+    </h4>
+    <h2>/</h2>
+    <table border="1" cellpadding="10px" style="border-collapse: collapse">
+        <tr>
+            <td>Тип запроса</td>
+            <td>Ссылка</td>
+            <td>Объяснение</td>
+        </tr>
+        <tr>
+            <td>GET</td>
+            <td>/</td>
+            <td>- домашний репозиторий. Выводит надпись server is working.</td>
+        </tr>
+        <tr>
+            <td>GET</td>
+            <td>/wallpaper</td>
+            <td>- возвращает картинку. Нужно для функционала виджета.</td>
+        </tr>
+        <tr>
+            <td>GET</td>
+            <td>/readme</td>
+            <td>- для просмотра этой справки.</td>
+        </tr>
+        <tr>
+            <td>GET</td>
+            <td>/d</td>
+            <td>- получение шаблона модели письма.</td>
+        </tr>
+        <tr>
+            <td>GET</td>
+            <td>/userTemplate</td>
+            <td>- получение шаблона модели пользователя.</td>
+        </tr>
+    </table>
+    <h2>
+        /letters
+    </h2>
+    <table border="1" cellpadding="10px" style="border-collapse: collapse">
+        <tr>
+            <td>Тип запроса</td>
+            <td>Ссылка</td>
+            <td>Объяснение</td>
+        </tr>
+        <tr>
+            <td>GET</td>
+            <td>/letters</td>
+            <td>- получение всех писем из БД.</td>
+        </tr>
+        <tr>
+            <td>GET</td>
+            <td>/letters/{id:int}</td>
+            <td>- возвращает картинку. Нужно для функционала виджета.</td>
+        </tr>
+        <tr>
+            <td>POST</td>
+            <td>/letters</td>
+            <td>
+                - создание письма и внесение его в БД.
+                <br />В теле запроса должна быть передана модель письма
+            </td>
+        </tr>
+        <tr>
+            <td>POST</td>
+            <td>/letters/user:{userId:int}</td>
+            <td>
+                - для добавления письма определенным пользователем.
+                <br />В теле запроса должна быть передана модель письма, с измененными параметрами.
+                <br />Для просмотра шаблона модели письма, нужно отправить запрос на /d.
+            </td>
+        </tr>
+        <tr>
+            <td>PUT</td>
+            <td>/letters/id:{id:int}/status:{status:bool}/inspect:{inspect:bool}</td>
+            <td>- изменение статуса и inspect письма по его id. Все нужные параметры получаются из заголовка.</td>
+        </tr>
+        <tr>
+            <td>DELETE</td>
+            <td>/letters/{id:int}</td>
+            <td>- для удаления письма по его id, который получается из заголовка.</td>
+        </tr>
+    </table>
+    <h2>
+        /users
+    </h2>
+    <table border="1" cellpadding="10px" style="border-collapse: collapse">
+        <tr>
+            <td>Тип запроса</td>
+            <td>Ссылка</td>
+            <td>Объяснение</td>
+        </tr>
+        <tr>
+            <td>GET</td>
+            <td>/users</td>
+            <td>- получение списка всех пользователей на БД.</td>
+        </tr>
+        <tr>
+            <td>GET</td>
+            <td>/users/id:{userId:int}</td>
+            <td>- получение пользователя по его id.</td>
+        </tr>
+        <tr>
+            <td>GET</td>
+            <td>/users/id:{userId:int}/letters</td>
+            <td>- получение списка писем пользователя по его id.</td>
+        </tr>
+        <tr>
+            <td>POST</td>
+            <td>/users/registration</td>
+            <td>
+                - для создания пользователя в БД.
+                <br />Для этого нужно в теле запроса отправить модель пользователя.
+                <br />Чтобы получить шаблон модели пользователя нужно сделать GET запрос на /userTemplate.
+            </td>
+        </tr>
+        <tr>
+            <td>POST</td>
+            <td>/users/login</td>
+            <td>
+            - для проверки правильности введеных данных.<br />
+            В теле запроса нужно передать следующую конструкцию:<br />
+            {<br />
+                "login": "login",<br />
+                "password": "password"<br />
+            }<br />
+            </td>
+        </tr>
+        <</table>
+    <h2>
+        /archive
+    </h2>
+    <table border="1" cellpadding="10px" style="border-collapse: collapse">
+        <tr>
+            <td>Тип запроса</td>
+            <td>Ссылка</td>
+            <td>Объяснение</td>
+        </tr>
+        <tr>
+            <td>GET</td>
+            <td>/archive</td>
+            <td>- получение писем из архива.</td>
+        </tr>
+        <tr>
+            <td>GET</td>
+            <td>/archive/{id:int}</td>
+            <td>- получение письма по id из архива.</td>
+        </tr>
+        <tr>
+            <td>DELETE</td>
+            <td>/archive/{id:int}</td>
+            <td>- удаления письма по id из архива.</td>
+        </tr>
+    </table>
+</body>
+</html>
